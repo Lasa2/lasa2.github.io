@@ -1,0 +1,61 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/Lasa2/discord-lib/main/json_schemas/application_command.json",
+    "title": "Application Command",
+    "description": "https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-structure",
+    "type": "object",
+    "properties": {
+        "id": {
+            "description": "unique id of the command",
+            "type": "string",
+            "readOnly": true
+        },
+        "type": {
+            "description": "the type of command, defaults 1 if not set",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+        },
+        "application_id": {
+            "description": "unique id of the parent application",
+            "type": "string"
+        },
+        "guild_id": {
+            "description": "guild id of the command, if not global",
+            "type": "string"
+        },
+        "name": {
+            "description": "1-32 character name",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32
+        },
+        "description": {
+            "description": "1-100 character description for CHAT_INPUT commands, empty string for USER and MESSAGE commands",
+            "type": "string",
+            "maxLength": 100
+        },
+        "options": {
+            "description": "the parameters for the command, max 25",
+            "type": "array",
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/Lasa2/discord-lib/main/json_schemas/application_command_option.json"
+            },
+            "maxItems": 25
+        },
+        "default_permissions": {
+            "description": "whether the command is enabled by default when the app is added to a guild",
+            "type": "boolean",
+            "default": true
+        },
+        "version": {
+            "description": "autoincrementing version identifier updated during substantial record changes",
+            "type": "string",
+            "readOnly": true
+        }
+    },
+    "required": [
+        "name",
+        "description"
+    ]
+}

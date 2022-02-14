@@ -1,0 +1,95 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/Lasa2/discord-lib/main/json_schemas/application_command_option.json",
+    "title": "Application Command Option",
+    "description": "https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure",
+    "type": "object",
+    "properties": {
+        "type": {
+            "description": "the type of option",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 11
+        },
+        "name": {
+            "description": "1-32 character name",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32
+        },
+        "description": {
+            "description": "1-100 character description",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "required": {
+            "description": "if the parameter is required or optional--default false",
+            "type": "boolean",
+            "default": false
+        },
+        "choices": {
+            "description": "choices for STRING, INTEGER, and NUMBER types for the user to pick from, max 25",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "1-100 character choice name",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 100
+                    },
+                    "value": {
+                        "description": "value of the choice, up to 100 characters if string",
+                        "type": [
+                            "string",
+                            "integer",
+                            "number"
+                        ]
+                    }
+                }
+            },
+            "maxLength": 25
+        },
+        "options": {
+            "description": "if the option is a subcommand or subcommand group type, these nested options will be the parameters",
+            "type": "array",
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/Lasa2/discord-lib/main/json_schemas/application_command_option.json"
+            }
+        },
+        "channel_types": {
+            "description": "if the option is a channel type, the channels shown will be restricted to these types",
+            "type": "array",
+            "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 13
+            }
+        },
+        "min_value": {
+            "description": "if the option is an INTEGER or NUMBER type, the minimum value permitted",
+            "type": [
+                "integer",
+                "number"
+            ]
+        },
+        "max_value": {
+            "description": "if the option is an INTEGER or NUMBER type, the maximum value permitted",
+            "type": [
+                "integer",
+                "number"
+            ]
+        },
+        "autocomplete": {
+            "description": "if autocomplete interactions are enabled for this STRING, INTEGER, or NUMBER type option",
+            "type": "boolean"
+        }
+    },
+    "required": [
+        "type",
+        "name",
+        "description"
+    ]
+}
