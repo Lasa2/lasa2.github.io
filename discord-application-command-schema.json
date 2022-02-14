@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/Lasa2/discord-lib/main/json_schemas/application_command.json",
+    "$id": "https://lasa2.github.io/discord-application-command-schema.json",
     "title": "Application Command",
     "description": "https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-structure",
     "type": "object",
@@ -39,7 +39,7 @@
             "description": "the parameters for the command, max 25",
             "type": "array",
             "items": {
-                "$ref": "https://raw.githubusercontent.com/Lasa2/discord-lib/main/json_schemas/application_command_option.json"
+                "$ref": "https://lasa2.github.io/discord-application-command-option-schema.json"
             },
             "maxItems": 25
         },
